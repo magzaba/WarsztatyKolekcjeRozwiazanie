@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 class Compartment {
     private Map<Seat, Passenger> seats;
 
-    public Compartment() {
+    Compartment() {
         seats = new TreeMap<Seat, Passenger>();
         seats.put(new Seat(1, Preferences.WINDOW), null);
         seats.put(new Seat(2, Preferences.UNSPECIFIED), null);
@@ -30,7 +30,9 @@ class Compartment {
         seats.put(new Seat(8, Preferences.WINDOW), null);
     }
 
-
+    Compartment(Map<Seat, Passenger> seats) {
+        this.seats = seats;
+    }
 //zadanie 2
     // zaimplemetuj metodę bookSeat() uwzględniając trzy warianty:
     // miejsce jest dostępne
@@ -63,7 +65,7 @@ class Compartment {
         var available = seats.entrySet().stream()
                 .filter(allSeats -> (allSeats.getKey().checkLocation() == preferences) && (allSeats.getValue() == null))
                 .map(preferableSeats -> preferableSeats.getKey())
-                .findFirst().orElseGet(null);
+                .findFirst().orElse(null);
         return available;
 
     }
