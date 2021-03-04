@@ -33,7 +33,7 @@ public void shouldReturnProperMessageWhenSuccessfullyReservedSeat(Preferences pr
     var actual = compartment.bookSeat(new Passenger("Molly Grey"), preferences);
 
     //then
-    assertEquals(actual,BookingMessage.SUCCESSFUL);
+    assertEquals(actual,BookingMessage.SUCCESSFUL.toString());
 }
 
     @DataProvider
@@ -58,7 +58,7 @@ public void shouldReturnProperMessageWhenSuccessfullyReservedSeat(Preferences pr
         var actual = compartment.bookSeat(new Passenger("Molly Grey"), preferences);
 
         //then
-        assertEquals(actual,BookingMessage.UNAVAILABLE);
+        assertEquals(actual,BookingMessage.UNAVAILABLE.toString());
     }
 
     @Test(dataProvider = "preferences")
@@ -79,7 +79,7 @@ public void shouldReturnProperMessageWhenSuccessfullyReservedSeat(Preferences pr
         var actual = compartment.bookSeat(new Passenger("Molly Grey"), preferences);
 
         //then
-        assertEquals(actual,BookingMessage.OVERLOADED);
+        assertEquals(actual,BookingMessage.OVERLOADED.toString());
     }
 
     public void shouldListReservedSeatsCorrectly(){

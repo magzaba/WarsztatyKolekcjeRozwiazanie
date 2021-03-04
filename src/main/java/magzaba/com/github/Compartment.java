@@ -5,15 +5,15 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 
-//zadanie 1
-// zaimplementuj klasę Compartment używając wybranej kolekcji
-// miejsca w przedziale ponumerowane są następująco:
-//      okno
-//  1           8
-//  2           7
-//  3           6
-//  4           5
-//      drzwi
+/* TODO: zadanie 1
+ zaimplementuj klasę Compartment używając wybranej kolekcji
+ miejsca w przedziale ponumerowane są następująco:
+      okno
+  1           8
+  2           7
+  3           6
+  4           5
+      drzwi */
 
 class Compartment {
     private Map<Seat, Passenger> seats;
@@ -33,11 +33,11 @@ class Compartment {
     Compartment(Map<Seat, Passenger> seats) {
         this.seats = seats;
     }
-//zadanie 2
-    // zaimplemetuj metodę bookSeat() uwzględniając trzy warianty:
-    // miejsce jest dostępne
-    // miejsce jest zajęte
-    // brak wolnych miejsc
+/* TODO: zadanie 2
+    zaimplemetuj metodę bookSeat() uwzględniając trzy warianty:
+    miejsce jest dostępne
+    miejsce jest zajęte
+    brak wolnych miejsc*/
 
     /**
      * Books a chosen seat and confirms reservation,  denies if not possible
@@ -51,8 +51,12 @@ class Compartment {
         if (isFull()) {
             return BookingMessage.OVERLOADED.toString();
         }
-        return getPreferableAvailable(preferences) == null ? BookingMessage.UNAVAILABLE.toString() : BookingMessage.SUCCESSFUL.toString();
-    }
+        if(preferences==Preferences.UNSPECIFIED){
+            return BookingMessage.SUCCESSFUL.toString();
+        } else {
+            return getPreferableAvailable(preferences) == null ? BookingMessage.UNAVAILABLE.toString() : BookingMessage.SUCCESSFUL.toString();
+        }
+        }
 
     private boolean isSeatAvailable(Seat seat) {
         return seats.get(seat) == null;
@@ -76,12 +80,12 @@ class Compartment {
     }
 
 
-//zadanie 3
-    // tworzenie raportów w formie listy Stringów - raporty mają wypisać:
-    //  miejsca wolne
-    // miejsca zajęte
-    // lista pasażerów z miejscem przez nich zarezerwowanym
-    // listy powinny być posortowane w kolejności zgodnej z numeracją miejsc, tj. od miejsca 1 do 8
+/* TODO: zadanie 3
+    tworzenie raportów w formie listy Stringów - raporty mają wypisać:
+      miejsca wolne
+     miejsca zajęte
+     lista pasażerów z miejscem przez nich zarezerwowanym
+     listy powinny być posortowane w kolejności zgodnej z numeracją miejsc, tj. od miejsca 1 do 8*/
 
     /**
      * @return list of available seats in ascending seat number order
